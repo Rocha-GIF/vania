@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Declaración de amor</title>
+	<style>
+		body {
+			background-color: #f2f2f2;
+			font-family: Arial, sans-serif;
+		}
+		.container {
+			width: 80%;
+			margin: 40px auto;
+			text-align: center;
+		}
+		.button {
+			background-color: #ff69b4;
+			color: #fff;
+			padding: 10px 20px;
+			border: none;
+			border-radius: 5px;
+			cursor: pointer;
+		}
+		.image {
+			width: 50%;
+			height: 200px;
+			margin: 20px auto;
+			background-size: cover;
+			background-position: center;
+		}
+	</style>
+</head>
+<body>
+	<div class="container" id="pregunta1">
+		<h1>Siempre quiero preguntarte algunas cosas pero no se por que, cuando estoy cerca de ti, me pierdo en tu mirada y se me olvidan las cosas que siempre quiero preguntarte, asi que prepare un cuestionario para ti</h1>
+		<div class="image" style="background-image: url('https://imgur.com/a/gLeT4qI');"></div>
+		<p>¿Te gusta pasar tiempo conmigo?</p>
+		<button class="button" onclick="siguientePregunta('si')">Sí</button>
+		<button class="button" onclick="siguientePregunta('no')">No</button>
+		
+	</div>
+	<div class="container" id="pregunta2" style="display: none;">
+		<h1>desde el primer momento en que te conoci paso un terremoto en mi cerrebro y mi corazon pues empece a sentir algo muy diferente a todo lo que habia sentido antes lo que me da un poco de miedo y felicidad a la vez</h1>
+		<div class="image" style="background-image: url('https://media.istockphoto.com/id/636294224/photo/heart-shape-in-rapeseed.jpg?s=612x612&w=0&k=20&c=-s2gGSF33Bac3GFWO4vcfVt9ZzO7ZasB6ugC369WR_o=');"></div>
+		<p>¿Crees que tenemos una conexión especial?</p>
+		<button class="button" onclick="siguientePregunta2('si')">Sí</button>
+		<button class="button" onclick="siguientePregunta2('no')">No</button>
+		
+	</div>
+	<div class="container" id="pregunta3" style="display: none;">
+		<h1>me gusta escucharte de lo que te paso, las cosas buenas y malas en el trabajo, en la casa y creo que eso es importante ya que desde la comunicacion es que nace la confianza</h1>
+		<div class="image" style="background-image: url('https://media.istockphoto.com/id/1218777695/photo/autumn-landscape-with-heart-shape-tree.jpg?s=612x612&w=0&k=20&c=doRnEc-iYWS4olk6stQR0FiZLmdu6QDKopsbI70oVnU=');"></div>
+		<p>¿Tu confias en mi?</p>
+		<button class="button" onclick="siguientePregunta3('si')">Sí</button>
+		<button class="button" onclick="siguientePregunta3('no')">No</button>
+		
+	</div>
+
+    	<div class="container" id="pregunta4" style="display: none;">
+		<h1>sabes el tiempo es un factor muy importante hoy en dia, leccion importante que nos enseño la pandemia asi que hoy estamos aqui mañana solo dios sabe, </h1>
+		<div class="image" style="background-image: url('https://www.istockphoto.com/photo/heart-tree-gm523894671-51430644');"></div>
+		<p>¿tu crees en el destino?</p>
+		<button class="button" onclick="siguientePregunta4('si')">Sí</button>
+		<button class="button" onclick="siguientePregunta4('no')">No</button>
+		
+	</div>
+
+
+
+	<div class="container" id="pregunta5" style="display: none;">
+		<h1>¿Quieres ser mía?</h1>
+		<div class="image" style="background-image: url('https://www.istockphoto.com/photo/faith-hope-love-concept-gm922741868-253295992');"></div>
+		<p>¿Quieres ser mi pareja?</p>
+		<button class="button" onclick="resultado('si')">Sí</button>
+		<button class="button" id="no-button" onclick="resultado('no')">No</button>
+		
+	</div>
+	<div class="container" id="resultado" style="display: none;">
+		<h1>Resultado</h1>
+		<div id="mensaje"></div>
+	</div>
+
+	<script>
+		let respuesta1 = '';
+		let respuesta2 = '';
+        let respuesta3 = '';
+        let respuesta4 = '';
+		let preguntaActual = 1;
+
+		function siguientePregunta(respuesta) {
+			respuesta1 = respuesta;
+			document.getElementById('pregunta1').style.display = 'none';
+			document.getElementById('pregunta2').style.display = 'block';
+		}
+
+		function siguientePregunta2(respuesta) {
+			respuesta2 = respuesta;
+			document.getElementById('pregunta2').style.display = 'none';
+			document.getElementById('pregunta3').style.display = 'block';
+		}
+		function siguientePregunta3(respuesta) {
+			respuesta3 = respuesta;
+			document.getElementById('pregunta3').style.display = 'none';
+			document.getElementById('pregunta4').style.display = 'block';
+		}
+		function siguientePregunta4(respuesta) {
+			respuesta3 = respuesta;
+			document.getElementById('pregunta4').style.display = 'none';
+			document.getElementById('pregunta5').style.display = 'block';
+		}
+
+
+		function resultado(respuesta) {
+			let mensaje = '';
+			if (respuesta1 === 'si' && respuesta2 === 'si' && respuesta3 === 'si' && respuesta4 === 'si' && respuesta5 === 'si') {
+				mensaje = '¡Genial! Estoy emocionado de comenzar esta aventura contigo.';
+			} else if (respuesta1 === 'no' || respuesta2 === 'no' || respuesta3 === 'no'|| respuesta4 === 'no'|| respuesta5 === 'no') {
+				mensaje = 'Entiendo. Gracias por ser honesta conmigo.';
+			} else {
+				mensaje = 'Tal vez podamos hablar más sobre esto...';
+			}
+
+			document.getElementById('pregunta5').style.display = 'none';
+			document.getElementById('resultado').style.display = 'block';
+			document.getElementById('mensaje').innerHTML = mensaje;
+		}
+
+        function moverBoton() {
+            this.style.position = 'absolute';
+            this.style.top = Math.floor(Math.random() * (window.innerHeight - this.offsetHeight)) + 'px';
+            this.style.left = Math.floor(Math.random() * (window.innerWidth - this.offsetWidth)) + 'px';
+        }
+
+            document.getElementById('no-button').addEventListener('mouseover', moverBoton);
+            document.getElementById('no-button').addEventListener('touchstart', moverBoton);
+
+	</script>
+</body>
+</html>
